@@ -14,7 +14,7 @@ provider:
         - "s3:GetObject"
         - "s3:ListBucket"
         - "s3:PutObject"
-      Resource: "arn:aws:s3:::my-aws-two/*"
+      Resource: "arn:aws:s3:::my-aws-two/test/*"
 
 
 plugins:
