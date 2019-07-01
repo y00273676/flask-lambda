@@ -1,0 +1,25 @@
+service: quotes
+provider:
+  name: aws
+  runtime: python3.6
+  stage: beta
+  region: us-east-2
+  memorySize: 128
+  profile: my
+  endpointType: REGIONAL
+
+plugins:
+  - serverless-wsgi
+  - serverless-python-requirements
+
+custom:
+  wsgi:
+    app: main.app
+    packRequirements: false
+
+functions:
+  app:
+    handler: wsgi_handler.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
