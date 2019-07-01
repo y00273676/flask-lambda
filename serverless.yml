@@ -1,4 +1,5 @@
 service: quotes
+
 provider:
   name: aws
   runtime: python3.6
@@ -7,6 +8,14 @@ provider:
   memorySize: 128
   profile: my
   endpointType: REGIONAL
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:GetObject"
+        - "s3:ListBucket"
+        - "s3:PutObject"
+      Resource: "arn:aws:s3:::my-aws-two/*"
+
 
 plugins:
   - serverless-wsgi
